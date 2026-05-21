@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Волшебное вязание | Иллюзорные игрушки крючком</title>
+    <!-- Шрифты и стили -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2c2418;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0e4d5;
+            background-color: #fefaf5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background-color: rgba(254, 250, 245, 0.9);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: #5e3a2b;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            color: #aa8c72;
+        }
+
+        .nav a {
+            margin-left: 32px;
+            text-decoration: none;
+            color: #4a3629;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #c87b4a;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 64px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 500;
+            color: #5e3a2b;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #5f4a38;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #c87b4a;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 48px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(200, 123, 74, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #a55d34;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(200, 123, 74, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #c87b4a;
+            color: #c87b4a;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: #c87b4a;
+            color: white;
+        }
+
+        /* секция примеры работ */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #4a2e20;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #f2e4d8;
+            display: block;
+        }
+
+        /* временные цветные фоны вместо реальных изображений (замените на свои фото) */
+        .demo-img1 { background: linear-gradient(135deg, #d9c2a7, #b9916e); }
+        .demo-img2 { background: linear-gradient(135deg, #c0b3a1, #9e7a5c); }
+        .demo-img3 { background: linear-gradient(135deg, #e6cfb5, #c68b5a); }
+        .demo-img4 { background: linear-gradient(135deg, #d3bc9e, #aa7a52); }
+
+        .card-content {
+            padding: 20px 24px 28px;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #3b2a1f;
+        }
+
+        .card-content p {
+            color: #6b5a48;
+        }
+
+        /* Подписка / мастер-класс */
+        .subscription-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fff7f0 100%);
+            border-radius: 48px;
+            padding: 48px 40px;
+            text-align: center;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.15);
+            border: 1px solid #f0dfd0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .price {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: #c87b4a;
+            font-family: 'Playfair Display', serif;
+            margin: 16px 0;
+        }
+
+        .price small {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #8f765e;
+        }
+
+        .feature-list {
+            text-align: left;
+            max-width: 320px;
+            margin: 32px auto;
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .feature-list i {
+            color: #c87b4a;
+            font-size: 1.3rem;
+            width: 24px;
+        }
+
+        /* о мастере */
+        .about {
+            background-color: #fcf6ef;
+            border-radius: 48px;
+            padding: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 240px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+            color: #4f3e2e;
+        }
+
+        .about-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 6rem;
+            color: #c87b4a;
+        }
+
+        /* footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #ecdfd2;
+            color: #9b846c;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .subscription-card { padding: 32px 20px; }
+            .price { font-size: 2.8rem; }
+            .nav a { margin-left: 20px; font-size: 0.9rem; }
+            .about { padding: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <h1>Иллюзия в петлях</h1>
+                <p>мастер-классы по волшебному вязанию</p>
+            </div>
+            <div class="nav">
+                <a href="#works">Примеры</a>
+                <a href="#subscribe">Подписка</a>
+                <a href="#about">О мастере</a>
+                <a href="https://www.youtube.com/@ProductiveDude" target="_blank" style="color:#c87b4a;"><i class="fab fa-youtube"></i> YouTube</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Hero -->
+            <section class="hero">
+                <h2>Иллюзорное вязание игрушек<br> — магия, которую можно потрогать</h2>
+                <p>Секретные техники, объёмные переходы, 3D-эффекты в каждой петельке. Станьте волшебником с крючком и пряжей.</p>
+                <a href="#subscribe" class="btn">✨ Начать творить</a>
+            </section>
+
+            <!-- Примеры работ -->
+            <section id="works" class="section">
+                <h2 class="section-title">Примеры работ учениц</h2>
+                <div class="gallery">
+                    <div class="card">
+                        <div class="card-img demo-img1"></div>
+                        <div class="card-content">
+                            <h3>Мишка-иллюзионист</h3>
+                            <p>Градиентные тени, меняющиеся при повороте. Техника «оптическое плетение».</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img demo-img2"></div>
+                        <div class="card-content">
+                            <h3>Кролик-хамелеон</h3>
+                            <p>Иллюзорные уши — тёмный рисунок проявляется только под определённым углом.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img demo-img3"></div>
+                        <div class="card-content">
+                            <h3>Лис с секретом</h3>
+                            <p>Скрытые узоры на хвосте, объёмный эффект без лишних нитей.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img demo-img4"></div>
+                        <div class="card-content">
+                            <h3>Совиный оптический обман</h3>
+                            <p>Глаза, которые «следят» за вами. Фишка иллюзорного вязания.</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 36px; color:#846b53;">Фото реальных работ учениц — добавьте свои изображения вместо цветных фонов</p>
+            </section>
+
+            <!-- Подписка / мастер-класс -->
+            <section id="subscribe" class="section">
+                <div class="subscription-card">
+                    <i class="fas fa-gem" style="font-size: 2.8rem; color:#c87b4a; margin-bottom: 8px; display: inline-block;"></i>
+                    <h2 style="font-size: 1.9rem;">Доступ ко всем МК</h2>
+                    <div class="price">3 490 ₽ <small>/ полный курс</small></div>
+                    <p style="margin-bottom: 24px;">Один платёж — и вы навсегда получите:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> 5 подробных мастер-классов (видео HD)</li>
+                        <li><i class="fas fa-check-circle"></i> Схемы иллюзорных узоров + PDF-описания</li>
+                        <li><i class="fas fa-check-circle"></i> Чат поддержки с автором</li>
+                        <li><i class="fas fa-check-circle"></i> Бонус: техника «невидимый шов»</li>
+                    </ul>
+                    <a href="#" class="btn" style="background-color: #a55d34; font-size: 1.2rem;">Купить мастер-классы</a>
+                    <p style="margin-top: 20px; font-size: 0.8rem;">Доступ навсегда • Обновления бесплатно</p>
+                </div>
+            </section>
+
+            <!-- О мастере / YouTube -->
+            <section id="about" class="section">
+                <div class="about">
+                    <div class="about-icon">
+                        <i class="fas fa-pastafarianism"></i>
+                        🧶
+                    </div>
+                    <div class="about-text">
+                        <h3>Привет, я Анна —</h3>
+                        <p>Мастер иллюзорного вязания и автор YouTube-канала «ProductiveDude» (теперь про вязание с характером). 7 лет создаю игрушки, которые удивляют оптическими эффектами. Моя методика превращает обычное вязание в магию: один поворот игрушки — и рисунок меняется.</p>
+                        <p>На канале делюсь бесплатными уроками, а здесь — полная система для тех, кто хочет создавать настоящие шедевры и удивлять близких.</p>
+                        <a href="https://www.youtube.com/@ProductiveDude" class="btn-outline btn" style="margin-top: 8px;"><i class="fab fa-youtube"></i> Посмотреть YouTube</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 «Иллюзия в петлях» — мастер-классы по иллюзорному вязанию игрушек. Все права защищены.</p>
+            <p style="margin-top: 8px;">По вопросам сотрудничества: magic@knitillusion.ru</p>
+        </div>
+    </footer>
+</body>
+</html>
